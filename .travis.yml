@@ -11,6 +11,7 @@ matrix:
     env: RUST_BACKTRACE=1
     before_script:
       - cargo install wasm-pack
+      - cargo install cargo-generate
     script:
       - cargo generate --git . --name testing
       # Having a broken Cargo.toml (in that it has curlies in fields) anywhere
@@ -25,6 +26,7 @@ matrix:
     env: RUST_BACKTRACE=1
     before_script:
       - rustup target add wasm32-unknown-unknown
+      - cargo install cargo-generate
     script:
       - cargo generate --git . --name testing
       - mv Cargo.toml Cargo.toml.tmpl
@@ -43,6 +45,7 @@ matrix:
     env: RUST_BACKTRACE=1
     before_script:
      - rustup target add wasm32-unknown-unknown
+     - cargo install cargo-generate
     script:
       - cargo generate --git . --name testing
       - mv Cargo.toml Cargo.toml.tmpl
