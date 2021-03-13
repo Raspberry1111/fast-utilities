@@ -1,2 +1,2 @@
 # fast-utils
-## A javascript library written in rust
+## A nodejs library written in rust

@@ -1,6 +1,6 @@
 [package]
 name = "fast-utilities"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Raspberrry1111 <7sansandflowey@gmail.com>"]
 edition = "2018"
 
@@ -12,6 +12,7 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 wasm-bindgen = "0.2.63"
+js-sys = "0.3.48"
 console_error_panic_hook = { version = "0.1.6", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
 
