@@ -12,7 +12,7 @@ extern "C" {
 
 
 /// Clones all top level properties on an object
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = shallowClone)]
 pub fn shallow_clone(x: JsValue) -> JsValue {
     if !x.is_object() {
         return x;
@@ -21,7 +21,7 @@ pub fn shallow_clone(x: JsValue) -> JsValue {
 }
 
 /// Clones deeply. Requires v8 package to be present
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = deepClone)]
 pub fn deep_clone(x: JsValue) -> JsValue {
     if !x.is_object() {
         return x;
