@@ -1,14 +1,19 @@
 [package]
 name = "fast-utilities"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Raspberrry1111 <7sansandflowey@gmail.com>"]
 edition = "2018"
+keywords = ["utilities"]
+description = "A fast utility library written in rust"
+license = "MIT"
+repository = "https://github.com/Raspberry1111/fast-utilities"
+
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 
 [features]
-default = ["console_error_panic_hook"]
+default = ["console_error_panic_hook", "wee_alloc"]
 
 [dependencies]
 wasm-bindgen = "0.2.63"
@@ -21,3 +26,4 @@ wasm-bindgen-test = "0.3.13"
 
 [profile.release]
 opt-level = "s"
+lto = true
