@@ -23,6 +23,10 @@ wee_alloc = { version = "0.4.5", optional = true }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.13"
+wasm-bindgen = {version = "0.2.63", features = ["serde-serialize"]}
+serde = {version = "1.0", features = ["derive"]}
+serde_json = "1.0"
+embed_js = "^0.1.4"
 
 [profile.release]
 opt-level = "s"
