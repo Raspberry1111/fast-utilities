@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Raspberry1111/fast-utilities.svg?branch=main)](https://travis-ci.com/Raspberry1111/fast-utilities)
 # fast-utilities
 ## A nodejs library of utilities written in rust
 
