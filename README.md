@@ -9,8 +9,8 @@
 There are lots of libraries to help abstract away some more annoying tasks like [lodash](https://lodash.com). However, I think the speed of these libraries can be improved upon using web assembly
 
 ## Does this replace \<insert library name here\> (ex lodash)
-No, this is
+No
 
-1: Nodejs only, no browser support
+1: Other libraries are more trusted and used in commercial applications
 
-2: More of an experiment/learning experience for me to see what's possible using web assembly
+2: This is more of an experiment/learning experience for me to see what's possible using web assembly

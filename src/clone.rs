@@ -1,5 +1,8 @@
 ///! Shallow and deep cloning
-use js_sys::{ArrayBuffer, Object};
+use js_sys::{
+    Array, ArrayBuffer, Object,
+    Reflect::{get, set},
+};
 use wasm_bindgen::prelude::*;
 
 // We need this to use generics for better types
@@ -34,12 +37,24 @@ pub fn shallow_clone(value: JsValue) -> JsValue {
     Object::assign(&Object::new(), &object).into()
 }
 
-/// Clones deeply. Requires v8 package to be present
+// Was going for something like https://stackoverflow.com/a/34624648
+/// Clones deeply. Currently does not support recursive objects
 #[wasm_bindgen(js_name = deepClone, skip_typescript)]
 pub fn deep_clone(value: JsValue) -> JsValue {
-    if !value.is_object() {
+    if !value.is_object() || value.is_null() {
         return value;
     };
-    let object = Object::from(value);
-    deserialize(serialize(&object))
+    let value_object = Object::from(value);
+    let cloned_object = Object::new() as Object;
+    let keys = Object::keys(&value_object) as Array;
+    for key in keys.to_vec() {
+		// We are getting the descriptor because I think to keep attributes like read-only you need to get it
+        let descriptor: Object = Object::get_own_property_descriptor(&value_object, &key).into();
+        let value = get(&descriptor, &JsValue::from_str("value")).unwrap();
+
+		// We reassign to the desciptors value to make sure we cloned all nested objects
+        set(&descriptor, &JsValue::from_str("value"), &deep_clone(value)).unwrap();
+        Object::define_property(&cloned_object, &key, &descriptor);
+    }
+    cloned_object.into()
 }
