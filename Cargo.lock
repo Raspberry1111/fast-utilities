@@ -32,7 +32,7 @@ dependencies = [
 
 [[package]]
 name = "fast-utilities"
-version = "0.1.1"
+version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
  "js-sys",
