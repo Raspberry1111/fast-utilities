@@ -21,7 +21,7 @@ matrix:
       - mv Cargo.toml Cargo.toml.tmpl
       - cd testing
       - wasm-pack build
-      - wasm-pack test --chrome --firefox --headless
+      - wasm-pack test --node
 
   # Builds on nightly.
   - rust: nightly
