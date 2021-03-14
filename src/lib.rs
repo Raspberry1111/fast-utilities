@@ -1,8 +1,8 @@
-mod utils;
-mod log;
 pub mod clone;
-pub mod math;
 pub mod is;
+mod log;
+pub mod math;
+mod utils;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.

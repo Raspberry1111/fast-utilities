@@ -48,11 +48,11 @@ pub fn deep_clone(value: JsValue) -> JsValue {
     let cloned_object = Object::new() as Object;
     let keys = Object::keys(&value_object) as Array;
     for key in keys.to_vec() {
-		// We are getting the descriptor because I think to keep attributes like read-only you need to get it
+        // We are getting the descriptor because I think to keep attributes like read-only you need to get it
         let descriptor: Object = Object::get_own_property_descriptor(&value_object, &key).into();
         let value = get(&descriptor, &JsValue::from_str("value")).unwrap();
 
-		// We reassign to the descriptors value to make sure we clone all nested objects
+        // We reassign to the descriptors value to make sure we clone all nested objects
         set(&descriptor, &JsValue::from_str("value"), &deep_clone(value)).unwrap();
         Object::define_property(&cloned_object, &key, &descriptor);
     }
