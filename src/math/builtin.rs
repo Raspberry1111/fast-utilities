@@ -7,13 +7,13 @@ pub fn clamp(number: f64, minimum: f64, maximum: f64) -> f64 {
     number.clamp(minimum, maximum)
 }
 
-/// Round a number up
+/// Rounds a number up
 #[wasm_bindgen]
 pub fn ceil(number: f64) -> f64 {
     number.ceil()
 }
 
-/// Round a number down
+/// Rounds a number down
 #[wasm_bindgen]
 pub fn floor(number: f64) -> f64 {
     number.floor()

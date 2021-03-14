@@ -15,7 +15,7 @@ type CloneFn = <T>(object: T) => T;
 */
 export const shallowClone: CloneFn
 /**
-* Clones all properties on an object
+* Clones all properties on an object. Does not support cyclic objects
 */
 export const deepClone: CloneFn
 "#;
@@ -38,7 +38,7 @@ pub fn shallow_clone(value: JsValue) -> JsValue {
 }
 
 // Was going for something like https://stackoverflow.com/a/34624648
-/// Clones deeply. Currently does not support recursive objects
+/// Clones all properties on an object. Does not support cyclic objects
 #[wasm_bindgen(js_name = deepClone, skip_typescript)]
 pub fn deep_clone(value: JsValue) -> JsValue {
     if !value.is_object() || value.is_null() {
@@ -52,7 +52,7 @@ pub fn deep_clone(value: JsValue) -> JsValue {
         let descriptor: Object = Object::get_own_property_descriptor(&value_object, &key).into();
         let value = get(&descriptor, &JsValue::from_str("value")).unwrap();
 
-		// We reassign to the desciptors value to make sure we cloned all nested objects
+		// We reassign to the descriptors value to make sure we clone all nested objects
         set(&descriptor, &JsValue::from_str("value"), &deep_clone(value)).unwrap();
         Object::define_property(&cloned_object, &key, &descriptor);
     }
