@@ -1,6 +1,6 @@
 [package]
 name = "fast-utilities"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["Raspberrry1111 <7sansandflowey@gmail.com>"]
 edition = "2018"
 keywords = ["utilities"]
